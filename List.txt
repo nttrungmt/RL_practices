@@ -1,0 +1,11 @@
+1. What is Reinforcement Learning? Why?
+2. MDP
+3. DP - Policy Evaluation, Policy Iteration, Value Iteration
+4. TD Learning: Q-Learning, SARSA, 
+5. Q-Learning
+6. SARSA
+7. DQN - DDQN
+8. Policy Gradient
+9. Actor Critic
+10. DDPG, A2C, A3C. DPPO
+10. Model-based RL
