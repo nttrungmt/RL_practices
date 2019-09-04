@@ -5,7 +5,7 @@ import torch
 from torch import multiprocessing as mp
 from core import *
 
-def run_agent(shared_brain, render=False, verbose=False, args=None):
+def run_agent(id, shared_brain, render=False, verbose=False, args=None):
     """
     Run the agent.
 
@@ -19,9 +19,9 @@ def run_agent(shared_brain, render=False, verbose=False, args=None):
         Should the agent print progress to the console?
     """
     if CONTROL is 'discrete':
-        local_agent = agent.DiscreteAgent(shared_brain, render, verbose, args)
+        local_agent = agent.DiscreteAgent(id, shared_brain, render, verbose, args)
     else:
-        local_agent = agent.ContinuousAgent(shared_brain, render, verbose, args)
+        local_agent = agent.ContinuousAgent(id, shared_brain, render, verbose, args)
     local_agent.run()
 
 if __name__ == "__main__":
@@ -55,9 +55,9 @@ if __name__ == "__main__":
     
     if NUMBER_OF_AGENTS == 1:
         # Don't bother with multiprocessing if only one agent
-        run_agent(brain.brain, render=True, args=args)
+        run_agent(0, brain.brain, render=True, args=args)
     else:
-        processes = [mp.Process(target=run_agent, args=(brain.brain, False, True, args))
+        processes = [mp.Process(target=run_agent, args=(a_i, brain.brain, False, True, args))
                      for a_i in range(NUMBER_OF_AGENTS)]
         for process in processes:
             process.start()
