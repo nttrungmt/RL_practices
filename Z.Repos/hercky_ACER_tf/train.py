@@ -36,9 +36,9 @@ from agent import Agent
 
 tf.flags.DEFINE_string("model_dir", "./model/", "Directory to write Tensorboard summaries and videos to.")
 tf.flags.DEFINE_string("env", "InvertedPendulum-v1", "Name of gym Mujoco environment, e.g. InvertedPendulum-v1")
-tf.flags.DEFINE_integer("max_steps", 512000, "Maximum of training timesteps")
-tf.flags.DEFINE_integer("k_steps", 64, "Number of k-step returns.")
-tf.flags.DEFINE_integer("max_episode_len", 5000, "Maximum episode length.")
+tf.flags.DEFINE_integer("max_steps", 128000, "Maximum of training timesteps")
+tf.flags.DEFINE_integer("k_steps", 32, "Number of k-step returns.")
+tf.flags.DEFINE_integer("max_episode_len", 500, "Maximum episode length.")
 tf.flags.DEFINE_integer("eval_every_sec", 60, "Evaluate the policy every N seconds")
 tf.flags.DEFINE_boolean("reset", True, "If set, delete the existing model directory and start training from scratch.")
 tf.flags.DEFINE_integer("feature_layer_size", 256, "Num of units in the hidden layer for feature processing")
@@ -50,7 +50,7 @@ tf.flags.DEFINE_float("c", 5.0, "Importance sampling truncated ratio")
 tf.flags.DEFINE_float("gamma", 0.99, "Discount factor")
 tf.flags.DEFINE_float("tau", 0.995, "Soft update rule for average network params")
 tf.flags.DEFINE_integer("pure_exploration_steps", 0, "Number of pure random policy steps to take  ")
-tf.flags.DEFINE_integer("current_policy_steps", 2, "Number of current policy steps to take  ")
+tf.flags.DEFINE_integer("current_policy_steps", 1, "Number of current policy steps to take  ")
 tf.flags.DEFINE_integer("update_steps", 1, "Number of off policy updates to perform per epoch  ")
 
 FLAGS = tf.flags.FLAGS
