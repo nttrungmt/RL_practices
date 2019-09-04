@@ -64,7 +64,7 @@ if __name__ == "__main__":
         for process in processes:
             process.join()
         
-        save_path = str(os.path.join(args.logdir,ENVIRONMENT_NAME))
+        save_path = str(os.path.join(args.logdir,ENVIRONMENT_NAME,'model.pkl'))
         print('Log dir will be configured at {}'.format(save_path))
         if not os.path.exists(save_path):
             os.makedirs(save_path)
