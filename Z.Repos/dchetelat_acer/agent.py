@@ -200,6 +200,7 @@ class ContinuousAgent(Agent):
                           if episode < NUMBER_OF_EXPLORATION_EPISODES * INITIAL_ORNSTEIN_UHLENBECK_NOISE_RATIO else 0.
             episode_rewards = 0.
             episode_lens = []
+            actor_loss, critic_loss, entropy_loss, opc_action_value, opc_advantage = None
             end_of_episode = False
             if self.verbose:
                 print("Agent #{}, Episode #{}, noise ratio {:.2f}".format(self.id, episode, noise_ratio), end="")
